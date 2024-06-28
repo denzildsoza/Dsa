@@ -64,7 +64,7 @@ int pop(struct Stack *stack,char ch){
 
 int main(int argc, char const *argv[])
 {
-    struct Stack * stack;
+    struct Stack * stack= (struct Stack *)malloc(sizeof(stack));
     stack->size=50;
     stack->top=-1;
     stack->arr=(char *)malloc(stack->size*sizeof(char));
