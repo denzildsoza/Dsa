@@ -55,6 +55,13 @@ int stack_array_pointer_struct_pop(struct Stack_arr_ptr_struct_node *stack){
     stack->top--; 
 }
 
+struct Node * stack_array_pointer_struct_peek(struct Stack_arr_ptr_struct_node *stack){
+    if(is_empty_arr_ptr_struct(stack)){
+        printf("Stack_arr_ptr_struct_node is empty");
+    }
+    return (stack->arr)[stack->top]; 
+}
+
 struct Stack_arr_ptr_struct_node * create_stack_array_pointer_struct(int size)
 {
     struct Stack_arr_ptr_struct_node * stack = (struct Stack_arr_ptr_struct_node *)malloc(sizeof(stack));

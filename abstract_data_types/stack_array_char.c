@@ -24,9 +24,8 @@ int stack_array_char_stack_traverse(struct Stack_char *stack){
     if(is_empty_char(stack)){
         return -1;
     }
-    for (int i=stack->top;i>-1;i--){
-        printf("%d\n",(stack->arr)[i]);
-
+    for (int i=0;i<=stack->top;i++){
+        printf("%c",(stack->arr)[i]);
     }
 }
 
