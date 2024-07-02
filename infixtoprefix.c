@@ -23,7 +23,7 @@ int get_precedence(struct Stack_arr_ptr_struct_node *precedence_table, char oper
     // printf("\ntop=>  %d ",precedence_table->top);
     // printf("\n");
     // stack_array_pointer_struct_stack_traverse(precedence_table);
-    for (int i = 0; i < precedence_table->top; i++)
+    for (int i = 0; i <= precedence_table->top; i++)
     {
         if ((precedence_table->arr)[i]->key == operator)
         {
@@ -49,6 +49,7 @@ int main(int argc, char const *argv[])
         if (precedence == -1)
         {
             stack_array_char_push(postfix_expression, expression[i]);
+                printf("%d %c\n",precedence,expression[i]);
         }
         else
         {
@@ -65,6 +66,7 @@ int main(int argc, char const *argv[])
                 {
                     struct Node *node = create_Node(expression[i], precedence);
                     stack_array_pointer_struct_push(operatorsstack, node);
+                    printf("%c",node->key);
                 }
                 else
                 {
