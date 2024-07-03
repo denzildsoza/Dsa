@@ -49,7 +49,6 @@ int main(int argc, char const *argv[])
         if (precedence == -1)
         {
             stack_array_char_push(postfix_expression, expression[i]);
-                printf("%d %c\n",precedence,expression[i]);
         }
         else
         {
