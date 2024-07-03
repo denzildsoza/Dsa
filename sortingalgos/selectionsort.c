@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
         min = i;
         for (int j = i; j <= array->top; j++)
         {
-            if ((array->arr)[i] > (array->arr)[j])
+            if ((array->arr)[min] > (array->arr)[j])
             {
                 min = j;
             }
@@ -34,8 +34,6 @@ int main(int argc, char const *argv[])
             (array->arr)[i]=(array->arr)[min];
             (array->arr)[min]=temp;
         }
-        printf("\npass %d=> ", i);
-        traverse_array_int(array);
     }
     /*logic_end_*/
 
