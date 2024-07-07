@@ -49,31 +49,49 @@ void in_order_linked_binary_tree_traversal(linked_binary_tree_node_int *node)
     printf("%d ", node->value);
     in_order_linked_binary_tree_traversal(node->right);
 }
+linked_binary_tree_node_int *prev = NULL;
 
-// static int  main(int argc, char const *argv[])
-// {
-//     linked_binary_tree_node_int *R = create_linked_binary_node_int(100);
+int is_binary_search_tree_int(linked_binary_tree_node_int *node)
+{   
+    if (node != NULL)
+    {
+        is_binary_search_tree_int(node->left);
+        if(prev!=NULL && prev->value>node->value){
+            return 0;
+        }
+        else return 1;
 
-//     R->left = create_linked_binary_node_int(50);
-//     R->right = create_linked_binary_node_int(150);
+    }else{
+        return 1;
+    }
+}
 
-//     R->left->left = create_linked_binary_node_int(25);
-//     R->left->right = create_linked_binary_node_int(25);
+int main(int argc, char const *argv[])
+{
+    linked_binary_tree_node_int *R = create_linked_binary_node_int(100);
 
-//     R->right->left = create_linked_binary_node_int(200);
-//     R->right->right = create_linked_binary_node_int(250);
+    R->left = create_linked_binary_node_int(50);
+    R->right = create_linked_binary_node_int(150);
 
-//     printf("Pre Ordered Traversal=> ");
-//     pre_order_linked_binary_tree_traversal(R);
-//     printf("\n");
+    R->left->left = create_linked_binary_node_int(20);
+    R->left->right = create_linked_binary_node_int(70);
 
-//     printf("Post Ordered Traversal=> ");
-//     post_order_linked_binary_tree_traversal(R);
-//     printf("\n");
+    R->right->left = create_linked_binary_node_int(120);
+    R->right->right = create_linked_binary_node_int(175);
 
-//     printf("In Ordered Traversal=> ");
-//     in_order_linked_binary_tree_traversal(R);
-//     printf("\n");
+    printf("Pre Ordered Traversal=> ");
+    pre_order_linked_binary_tree_traversal(R);
+    printf("\n");
 
-//     return 0;
-// }
+    printf("Post Ordered Traversal=> ");
+    post_order_linked_binary_tree_traversal(R);
+    printf("\n");
+
+    printf("In Ordered Traversal=> ");
+    in_order_linked_binary_tree_traversal(R);
+    printf("\n");
+
+    is_binary_search_tree_int(R);
+
+    return 0;
+}
