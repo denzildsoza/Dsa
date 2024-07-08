@@ -52,19 +52,59 @@ void in_order_linked_binary_tree_traversal(linked_binary_tree_node_int *node)
 linked_binary_tree_node_int *prev = NULL;
 
 int is_binary_search_tree_int(linked_binary_tree_node_int *node)
-{   
+{
     if (node != NULL)
     {
         is_binary_search_tree_int(node->left);
-        if(prev!=NULL && prev->value>node->value){
+        if (prev != NULL && prev->value > node->value)
+        {
             return 0;
         }
-        else return 1;
-
-    }else{
+        else
+            return 1;
+    }
+    else
+    {
         return 1;
     }
 }
+
+linked_binary_tree_node_int *binary_search_tree_insertion(linked_binary_tree_node_int *root, linked_binary_tree_node_int *new_node)
+{
+    if (root == NULL)
+    {
+        return new_node;
+    }
+    if (root->value > new_node->value)
+    {
+        root->left = binary_search_tree_insertion(root->left, new_node);
+        return root;
+    }
+    else
+    {
+        root->right = binary_search_tree_insertion(root->right, new_node);
+        return root;
+    }
+}
+
+linked_binary_tree_node_int *binary_search_tree_deletion(linked_binary_tree_node_int *root, linked_binary_tree_node_int *new_node)
+{
+    
+}
+
+linked_binary_tree_node_int *linked_binary_tree_node_int_print_all_leaf_nodes(linked_binary_tree_node_int *node)
+{
+    if (node == NULL)
+    {
+        return node;
+    }
+    linked_binary_tree_node_int *left = linked_binary_tree_node_int_print_all_leaf_nodes(node->left);
+    linked_binary_tree_node_int *right = linked_binary_tree_node_int_print_all_leaf_nodes(node->right);
+    if (right == NULL && left == NULL)
+    {
+        printf("%d ", node->value);
+    }
+};
 
 int main(int argc, char const *argv[])
 {
@@ -91,7 +131,23 @@ int main(int argc, char const *argv[])
     in_order_linked_binary_tree_traversal(R);
     printf("\n");
 
-    is_binary_search_tree_int(R);
+    linked_binary_tree_node_int *new_node = create_linked_binary_node_int(150);
 
+    linked_binary_tree_node_int *new_root = binary_search_tree_deletion(R, new_node);
+
+    // int is_B_S_T = is_binary_search_tree_int(new_root);
+    // if (is_B_S_T)
+    // {
+    //     printf("its a binary tree");
+    // }
+    // else
+    // {
+    //     printf("its not a binary tree");
+    // }
+    printf("In Ordered Traversal=> ");
+    in_order_linked_binary_tree_traversal(new_root);
+    printf("\n");
+
+    // linked_binary_tree_node_int_print_all_leaf_nodes(R);
     return 0;
 }
